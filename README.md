@@ -1,12 +1,13 @@
 # npxd
-> Conveniently run [`npx`](https://nodejs.dev/learn/the-npx-nodejs-package-runner) commands inside Docker container
+> Conveniently run `npx` commands inside Docker container
 
-`npxd <command>` runs command inside Docker container no matter from where you call it:
- * if called from outside container - ensures container is running via `docker-compose up` and runs command via `docker-compose exec`
+`npxd <command>` works like [`npx`](https://nodejs.dev/learn/the-npx-nodejs-package-runner)
+but runs command inside Docker container defined in `docker-compose.yml`.
+
+You can invoke it from either host machine or inside container: 
+ * if called from host machine - ensures container is running via `docker-compose up` and runs command via `docker-compose exec`
  * if called from inside container - just runs command ¯\\\_(ツ)\_/¯
  
-Just prepend `npxd ...` to scripts in `package.json`.
-
 ## Install
 ```
 npm i -D npxd
@@ -23,7 +24,7 @@ Ensure you have dockerized project with `Dockerfile` and `docker-compose.yml` fi
    +  "lint": "npxd eslint ./src",
    },
    ```
-2. Run as usual from your host machine: 
+2. Run as usual from your host machine terminal: 
    ```
    npm run lint
    ```
