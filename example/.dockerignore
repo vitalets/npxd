@@ -1,0 +1,6 @@
+.git
+.idea
+.editorconfig
+node_modules
+npm-debug.log
+Dockerfile

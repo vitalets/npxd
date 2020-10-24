@@ -1,0 +1,15 @@
+{
+  "name": "npxd",
+  "version": "1.0.0",
+  "description": "Conveniently run npx commands inside Docker container",
+  "author": {
+    "name": "Vitaliy Potapov",
+    "email": "noginsk@rambler.ru"
+  },
+  "bin": "npxd.sh",
+  "files": [
+    "npxd.sh",
+    "README.md"
+  ],
+  "license": "MIT"
+}

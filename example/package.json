@@ -1,0 +1,28 @@
+{
+  "name": "npxd-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "docker-compose up -dV && docker-compose exec app sh",
+    "lint": "npxd eslint src test",
+    "test": "npxd mocha test/*.js"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.js": "npxd eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged --relative && npm test",
+      "pre-push": "npm test"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
+    "mocha": "^8.1.3",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.6",
+    "npxd": "^1.0.0"
+  }
+}
