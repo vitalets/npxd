@@ -23,7 +23,7 @@ Alternatively you can download script directly from GitHub and store it in your 
 It allows you to adopt script for your needs (as it's a few lines of code).
 But in that case you should invoke it as `./npxd.sh` not `npxd` in `package.json` scripts.
 ```
-wget -O npxd.sh https://raw.githubusercontent.com/raspberrypi/linux/rpi-3.2.27/arch/arm/configs/bcmrpi_defconfig
+wget -O npxd.sh https://raw.githubusercontent.com/vitalets/npxd/main/npxd.sh
 chmod +x npxd.sh
 ```
 
