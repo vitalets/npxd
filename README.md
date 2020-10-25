@@ -77,5 +77,5 @@ my_service
 > Note: when you install `npxd` directly from GitHub you may just edit `./npxd.sh` to set particular service name.
 
 ## Example
-Please see example project in [/example](/example) directory.
+Please see example project in [/example](https://github.com/vitalets/npxd/tree/main/example) directory.
 

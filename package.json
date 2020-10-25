@@ -11,5 +11,9 @@
     "npxd.sh",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vitalets/npxd.git"
+  },
   "license": "MIT"
 }

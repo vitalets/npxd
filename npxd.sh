@@ -1,10 +1,8 @@
 #!/bin/sh
 # If inside container - just run command.
-# If outside container - ensure stack is running and run command inside container.
+# If outside container - ensure container is running and run command inside container.
 #
-# Examples:
-# Inside package.json scripts: npxd eslint src
-# From terminal: ./node_modules/.bin/npxd eslint src
+# Details: https://github.com/vitalets/npxd
 
 if grep -sq docker /proc/1/cgroup; then
   npx "$@"
