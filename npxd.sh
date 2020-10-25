@@ -2,7 +2,7 @@
 # If inside container - just run command.
 # If outside container - ensure container is running and run command inside container.
 #
-# Details: https://github.com/vitalets/npxd
+# See: https://github.com/vitalets/npxd
 
 if grep -sq docker /proc/1/cgroup; then
   npx "$@"
