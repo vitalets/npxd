@@ -9,7 +9,10 @@
 if grep -sq docker /proc/1/cgroup; then
   npx "$@"
 else
-  docker-compose up -d --remove-orphans
-  service=${NPXD:-$(docker-compose ps --services --filter source=build)}
+  docker-compose up -d
+  service=$(cat ./.npxdrc 2>/dev/null)
+  if [ "$service" == "" ]; then
+    service=$(docker-compose ps --services --filter source=build)
+  fi
   docker-compose exec -T $service npx "$@"
 fi

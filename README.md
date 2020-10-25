@@ -53,14 +53,11 @@ But this will work:
 ```
 
 #### Configuring service name
-By default `npxd` runs command inside container having `build:` section in `docker-compose.yml`.
-You can redefine it by passing env variable `NPXD`:
+By default `npxd` runs command inside first container with `build:` section in `docker-compose.yml`.
+You can redefine it by creating `.npxdrc` file containing service name. For example `.npxdrc`:
 ```
-"scripts": {
-  "lint": "NPXD=my_service npxd eslint ./src"
-},
+my_service
 ```
-> Note: here env variable before `npxd` is ok because it is needed for `npxd` itself, not for command.
 
 ## Example
 Please see example project in [/example](/example) directory.
