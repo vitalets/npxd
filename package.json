@@ -6,6 +6,11 @@
     "name": "Vitaliy Potapov",
     "email": "noginsk@rambler.ru"
   },
+  "scripts": {
+    "release": "npm version $VER && npm publish && git push --follow-tags",
+    "release-patch": "VER=patch npm run release",
+    "release-minor": "VER=minor npm run release"
+  },
   "bin": "npxd.sh",
   "files": [
     "npxd.sh",
