@@ -15,7 +15,7 @@ if grep -sq docker /proc/1/cgroup; then
   npx "$@"
 else
   docker-compose up -d
-  service=$(cat ./.npxdrc 2>/dev/null)
+  service=$(cat ./.npxdrc 2>/dev/null || echo "")
   if [ "$service" == "" ]; then
     service=$(docker-compose ps --services --filter source=build)
   fi
