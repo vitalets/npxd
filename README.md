@@ -27,7 +27,7 @@ You can invoke it from either host machine or inside container:
    
    > npxd mocha test/*.js
    
-   example_app_1 is up-to-date
+   Recreating example_app_1 ... done
    
      ✓ should add numbers
    
