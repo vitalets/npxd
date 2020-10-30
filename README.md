@@ -7,8 +7,36 @@ but runs command inside Docker container defined in `docker-compose.yml`.
 You can invoke it from either host machine or inside container: 
  * if called from host machine - ensures container is running via `docker-compose up` and runs command via `docker-compose exec`
  * if called from inside container - just runs command ¯\\\_(ツ)\_/¯
- 
-## Install
+
+## Usage
+1. Ensure you have dockerized project with `docker-compose.yml` file.
+2. Prepend `package.json` scripts with `npxd`:
+   ```diff
+   "scripts": {
+   -  "test": "mocha test/*.js",
+   +  "test": "npxd mocha test/*.js",
+   },
+   ```
+3. Run as usual from your host machine: 
+   ```
+   npm test
+   ```
+4. Enjoy results of command executed in Docker container:
+   ```
+   $ npm test
+   
+   > npxd mocha test/*.js
+   
+   example_app_1 is up-to-date
+   
+     ✓ should add numbers
+   
+     1 passing (36ms)
+   ```
+
+See full example code in [/example](https://github.com/vitalets/npxd/tree/main/example) directory.
+
+## Installation
 There are to installation options:
  
 #### Install from npm
@@ -27,31 +55,18 @@ wget -O npxd.sh https://raw.githubusercontent.com/vitalets/npxd/main/npxd.sh
 chmod +x npxd.sh
 ```
 
-## Usage
-Ensure you have dockerized project with `docker-compose.yml` file.
-
-#### Usage in package.json
-1. Prepend scripts with `npxd`:
-   ```diff
-   "scripts": {
-   -  "lint": "eslint ./src",
-   +  "lint": "npxd eslint ./src",
-   },
-   ```
-2. Run as usual from your host machine terminal: 
-   ```
-   npm run lint
-   ```
-   The `eslint` command will be executed inside Docker container.
-
-#### Usage NOT in package.json
+## Usage NOT in package.json
 When invoked not from `package.json` scripts you need to use `npx` in front of `npxd` 
 (as it is usual executable inside `node_modules/.bin`):
 ```
 $ npx npxd eslint ./src
 ```
+Or if you installed from GitHub, just run script:
+```
+$ ./npxd.sh eslint ./src
+```
 
-#### Passing env variables 
+## Passing env variables 
 This will NOT work:
 ```
 "scripts": {
@@ -66,7 +81,7 @@ But this will work:
 },
 ```
 
-#### Configuring service name
+## Configuring service name
 By default `npxd` runs command inside first container with `build:` section in `docker-compose.yml`.
 You can redefine it by creating `.npxdrc` file containing service name. 
 Example of `.npxdrc` that runs commands in `my_service`:
@@ -76,6 +91,5 @@ my_service
 
 > Note: when you install `npxd` directly from GitHub you may just edit `./npxd.sh` to set particular service name.
 
-## Example
-Please see example project in [/example](https://github.com/vitalets/npxd/tree/main/example) directory.
-
+## License
+MIT @ [Vitaliy Potapov](https://github.com/vitalets)
