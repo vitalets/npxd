@@ -1,7 +1,7 @@
 # npxd
 > [`npx`](https://nodejs.dev/learn/the-npx-nodejs-package-runner) for Docker
 
-`npxd <command>` is like `npx` but runs command inside Docker container defined in `docker-compose.yml`.
+`npxd <command>` is like `npx <command>` but runs command inside Docker container defined in `docker-compose.yml`.
 
 You can invoke it from either host machine or inside container: 
  * if called from host machine - ensures container is running via `docker-compose up` and runs command via `docker-compose exec`
