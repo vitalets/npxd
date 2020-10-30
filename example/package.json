@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "docker-compose up -dV && docker-compose exec app sh",
+    "start": "docker-compose up -dV",
     "lint": "npxd eslint src test",
     "test": "npxd mocha test/*.js"
   },
@@ -23,6 +23,6 @@
     "mocha": "^8.1.3",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.6",
-    "npxd": "^1.0.0"
+    "npxd": "^1.1.3"
   }
 }
