@@ -1,8 +1,7 @@
 # npxd
-> Conveniently run `npx` commands inside Docker container
+> [`npx`](https://nodejs.dev/learn/the-npx-nodejs-package-runner) for Docker
 
-`npxd <command>` works exactly like [`npx`](https://nodejs.dev/learn/the-npx-nodejs-package-runner)
-but runs command inside Docker container defined in `docker-compose.yml`.
+`npxd <command>` is like `npx` but runs command inside Docker container defined in `docker-compose.yml`.
 
 You can invoke it from either host machine or inside container: 
  * if called from host machine - ensures container is running via `docker-compose up` and runs command via `docker-compose exec`
@@ -10,18 +9,19 @@ You can invoke it from either host machine or inside container:
 
 ## Usage
 1. Ensure you have dockerized project with `docker-compose.yml` file.
-2. Prepend `package.json` scripts with `npxd`:
+2. [Install npxd](https://github.com/vitalets/npxd#installation)
+3. Prepend `package.json` scripts with `npxd`:
    ```diff
    "scripts": {
    -  "test": "mocha test/*.js",
    +  "test": "npxd mocha test/*.js",
    },
    ```
-3. Run as usual from your host machine: 
+4. Run as usual from your host machine: 
    ```
    npm test
    ```
-4. Enjoy results of command executed in Docker container:
+5. Check results of command executed in container:
    ```
    $ npm test
    
