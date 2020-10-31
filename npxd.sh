@@ -15,7 +15,7 @@ else
   docker-compose up -d
   service=$(cat ./.npxdrc 2>/dev/null || echo "")
   if [ "$service" == "" ]; then
-    service=$(docker-compose ps --services --filter source=build)
+    service=$(docker-compose ps --services --filter source=build | head -n 1)
   fi
   docker-compose exec -T $service npx "$@"
 fi
