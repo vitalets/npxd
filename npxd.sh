@@ -24,5 +24,5 @@ else
       exit 1
     fi
   fi
-  docker compose exec -T "$service" npx "$@"
+  docker compose exec "$service" npx "$@"
 fi
