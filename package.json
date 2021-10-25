@@ -1,6 +1,6 @@
 {
   "name": "npxd",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Seamless command invocation inside Docker container",
   "author": {
     "name": "Vitaliy Potapov",
