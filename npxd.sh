@@ -11,7 +11,7 @@ if [ $# -eq 0 ]; then
   exit 0
 fi
 
-if grep -sq docker /proc/1/cgroup; then
+if grep -sq docker /proc/1/cgroup || [ -f /.dockerenv ]; then
   npx "$@"
 else
   docker compose up -d
