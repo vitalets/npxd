@@ -12,7 +12,10 @@ if [ $# -eq 0 ]; then
 fi
 
 if grep -sq docker /proc/1/cgroup || [ -f /.dockerenv ]; then
-  npx "$@"
+  # In node v16 command npx "$@" does not work stable any more 
+  # because $@ can contain not npm package executable (e.g. env)
+  # After playing a lot with qoutes I found only this solution:
+  eval "npx -c '$@'"
 else
   docker compose up -d
   service=$(cat ./.npxdrc 2>/dev/null || echo "")
