@@ -12,7 +12,7 @@ if [ $# -eq 0 ]; then
 fi
 
 if grep -sq docker /proc/1/cgroup || [ -f /.dockerenv ]; then
-  # In node v16 command npx "$@" does not work stable any more 
+  # In node v16 command 'npx "$@"' does not work stable any more 
   # because $@ can contain not npm package executable (e.g. env)
   # After playing a lot with qoutes I found only this solution:
   eval "npx -c '$@'"
@@ -27,5 +27,8 @@ else
       exit 1
     fi
   fi
+  # In node v16 command 'docker compose exec "$service" npx "$@"' does not work stable any more
+  # because $@ can contain not npm package executable (e.g. env).
+  # So inside container pass execution to npxd again to proper handle agruments via eval:
   docker compose exec "$service" npx npxd "$@"
 fi
